@@ -10,8 +10,9 @@ public class Library
 	private ArrayList <Song> songs;
 	private ArrayList <MediaPlayer> mpSongs;
 	private MediaPlayer mpCurrent;
-	private Song current; //Update Current Song
-	private int i;
+	private Song current;
+	private int index;;
+	
 	public Library()
 	{
 		songs = new ArrayList <Song> ();
@@ -42,6 +43,11 @@ public class Library
 		}
 	}
 	
+	public int getSize()
+	{
+		return songs.size();
+	}
+	
 	public MediaPlayer getMP(int i)
 	{
 		//Update Current Song
@@ -54,45 +60,87 @@ public class Library
 		return current;
 	}
 	
+	public MediaPlayer getMpCurrent()
+	{
+		return mpCurrent;
+	}
+	
+	public Song getCurrent()
+	{
+		return current;
+	}
+	
 	public void playFirst()
 	{
-		//Update Current Song
-		mpCurrent = getMP(0);
-		playSong(mpCurrent);
-		current = getSong(0);
-		
+		index = 0;
+		current = getSong(index);
+		mpCurrent = getMP(index);
+		playSong(mpCurrent);	
 	}
 	
 	public void playRandom()
 	{
-		//Update Current Song
-		int random = (int) (Math.random()*mpSongs.size());
-		mpCurrent = getMP(random);
+		int random = 0;
+		do
+		{
+			random = (int) (Math.random()*mpSongs.size());
+		} while (index == random);
+		
+		index = random;
+		
+		current = getSong(index);
+		mpCurrent = getMP(index);
 		playSong(mpCurrent);
-		current = getSong(random);
+		
 	}
 	
 	public void playCurrentSong()
 	{
-		mpCurrent.play();
+		playSong(mpCurrent);
 	}
 	
 	public void playSong(MediaPlayer s)
 	{	
 		//Song is playing
 		s.play();
-	
-	}
-	public void playNext(MediaPlayer N)
-	{
 		
-		current = getSong(i +1);
-		mpCurrent = getMP(i+1);
+		mpCurrent.setOnEndOfMedia(new Runnable () {
+			@Override
+			public void run()
+			{
+				mpCurrent.stop();
+				playNext();
+			}
+		});
 	}
 	
+	public void playPrev()
+	{
+		if (index == 0)
+		{
+			index = mpSongs.size() - 1;
+		}
+		else
+		{
+			index--;
+		}
+		current = getSong(index);
+		mpCurrent = getMP(index);
+		playSong(mpCurrent);
+	}
 	public void playNext()
 	{
-		System.out.println("This doesn't work yet");
+		if (index < mpSongs.size() - 1)
+		{
+			index++;
+		}
+		else
+		{
+			index = 0;
+		}
+		current = getSong(index);
+		mpCurrent = getMP(index);
+		playSong(mpCurrent);
 	}
 	
 	public void pausePlayback()

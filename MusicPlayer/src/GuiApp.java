@@ -8,7 +8,7 @@ public class GuiApp extends JFrame
 	
 	public GuiApp()
 	{
-		setBounds(400,200,300,150);
+		setBounds(400,200,400,150);
 		Panel app = new Panel();
 		this.setContentPane(app);
 	}
