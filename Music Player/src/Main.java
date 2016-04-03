@@ -6,20 +6,22 @@ public class Main
 	public static void main(String[] args)
 	{
 		Library main = new Library();
-		
+		main.displaySongs();
 		boolean done = false;
 		
 		while (!done)
 		{
 			displayMenu();
-			int menu = UserInput.getInt(1, 5);
+			int menu = UserInput.getInt(1, 6);
 			switch (menu)
 			{
 				case 1: main.playFirst();
 						break;
 				case 2: main.playRandom();
 						break;
-				case 3: System.out.println("NOT READY YET!!!");
+				case 3: //menu = UserInput.getInt(1, main.getSize());
+						//main.playSong(s);
+						System.out.println("Won't work");
 						break;
 				case 4: main.pausePlayback();
 						break;

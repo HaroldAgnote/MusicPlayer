@@ -69,4 +69,12 @@ public class Library
 	{
 		current.stopSong();
 	}
+	
+	public void displaySongs()
+	{
+		for (int i = 0; i < songs.size(); i++)
+		{
+			System.out.println((i + 1) + ". " + getSong(i));
+		}
+	}
 }

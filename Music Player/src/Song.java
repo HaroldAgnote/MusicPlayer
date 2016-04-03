@@ -39,4 +39,9 @@ public class Song
 		
 		player.stop();
 	}
+	
+	public String toString()
+	{
+		return fileName;
+	}
 }
