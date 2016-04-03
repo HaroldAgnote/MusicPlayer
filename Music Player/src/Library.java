@@ -1,14 +1,17 @@
 import java.util.*;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import java.io.*;
 
 public class Library
 {
-	private LinkedList songs;
-	private Song current;
+	private ArrayList <MediaPlayer> songs;
+	private MediaPlayer current;
 	
 	public Library()
 	{
-		songs = new LinkedList();
+		songs = new ArrayList <MediaPlayer> ();
 		
 		addFromFolder();
 	}
@@ -25,21 +28,16 @@ public class Library
 			File[] listOfFiles = folder.listFiles();
 			for (int i = 0; i < listOfFiles.length; i++)
 			{
-				try 
-				{
-					songs.add(new Song(listOfFiles[i].getCanonicalPath().toString()));
-				}
-				catch (IOException e) 
-				{
-					System.out.println("Something Happened");
-				}
+				Media song = new Media (listOfFiles[i].getAbsolutePath());
+				songs.add(new MediaPlayer(song));
 			}
 		}
 	}
 	
-	public Song getSong(int i)
+	public MediaPlayer getSong(int i)
 	{
-		return songs.get(i).getValue();
+		current = songs.get(i);
+		return current;
 	}
 	
 	public void playFirst()
@@ -55,19 +53,19 @@ public class Library
 		playSong(current);
 	}
 	
-	public void playSong(Song s)
+	public void playSong(MediaPlayer s)
 	{
-		s.playSong();
+		s.play();
 	}
 	
 	public void pausePlayback()
 	{
-		current.pauseSong();
+		current.pause();
 	}
 	
 	public void stopPlayback()
 	{
-		current.stopSong();
+		current.stop();
 	}
 	
 	public void displaySongs()
