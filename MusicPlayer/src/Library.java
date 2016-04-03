@@ -64,10 +64,20 @@ public class Library
 		playSong(mpCurrent);
 	}
 	
+	public void playCurrentSong()
+	{
+		mpCurrent.play();
+	}
+	
 	public void playSong(MediaPlayer s)
 	{	
 		//Song is playing
 		s.play();
+	}
+	
+	public void playNext()
+	{
+		System.out.println("This doesn't work yet");
 	}
 	
 	public void pausePlayback()

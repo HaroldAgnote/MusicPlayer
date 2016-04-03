@@ -10,6 +10,5 @@ public class MainGui extends JFrame
 		app.setTitle("Music Player");
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setVisible(true);
-		app.setExtendedState(app.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 	}
 }
