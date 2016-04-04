@@ -21,4 +21,5 @@ BeachHacks  (April 2 - April 3, 2016)
 	The Desktop application was able to be completed with minor bugs and a couple of formatting issues that can be fixed if needed.
 
 
-	The team had plans to also create an Android Application of the same concept, but failed to do so in this Hackathon. However, the creator of this Project will consider working on this part of the Project in the future.
+	The team had plans to also create an Android Application of the same concept, but failed to do so in this Hackathon.
+	However, the creator of this Project will consider working on this part of the Project in the future.
